@@ -1,0 +1,15 @@
+syntax = "proto3";
+package flashloanchain.flashloan;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/kaushik-i-b/flashloanchain/x/flashloan/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "flashloanchain/x/flashloan/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

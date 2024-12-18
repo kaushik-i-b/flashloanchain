@@ -53,7 +53,10 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	flashloanmodulev1 "github.com/kaushik-i-b/flashloanchain/api/flashloanchain/flashloan/module"
 	flashloanchainmodulev1 "github.com/kaushik-i-b/flashloanchain/api/flashloanchain/flashloanchain/module"
+	_ "github.com/kaushik-i-b/flashloanchain/x/flashloan/module" // import for side-effects
+	flashloanmoduletypes "github.com/kaushik-i-b/flashloanchain/x/flashloan/types"
 	_ "github.com/kaushik-i-b/flashloanchain/x/flashloanchain/module" // import for side-effects
 	flashloanchainmoduletypes "github.com/kaushik-i-b/flashloanchain/x/flashloanchain/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		flashloanchainmoduletypes.ModuleName,
+		flashloanmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		flashloanchainmoduletypes.ModuleName,
+		flashloanmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		flashloanchainmoduletypes.ModuleName,
+		flashloanmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   flashloanchainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&flashloanchainmodulev1.Module{}),
+			},
+			{
+				Name:   flashloanmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&flashloanmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

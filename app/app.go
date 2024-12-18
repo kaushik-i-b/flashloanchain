@@ -75,7 +75,9 @@ import (
 	ibctransferkeeper "github.com/cosmos/ibc-go/v8/modules/apps/transfer/keeper"
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
+	flashloanmodulekeeper "github.com/kaushik-i-b/flashloanchain/x/flashloan/keeper"
 	flashloanchainmodulekeeper "github.com/kaushik-i-b/flashloanchain/x/flashloanchain/keeper"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"github.com/kaushik-i-b/flashloanchain/docs"
@@ -142,6 +144,7 @@ type App struct {
 	ScopedKeepers             map[string]capabilitykeeper.ScopedKeeper
 
 	FlashloanchainKeeper flashloanchainmodulekeeper.Keeper
+	FlashloanKeeper      flashloanmodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -246,6 +249,7 @@ func New(
 		&app.GroupKeeper,
 		&app.CircuitBreakerKeeper,
 		&app.FlashloanchainKeeper,
+		&app.FlashloanKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)
