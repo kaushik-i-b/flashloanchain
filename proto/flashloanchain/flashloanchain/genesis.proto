@@ -1,0 +1,17 @@
+syntax = "proto3";
+package flashloanchain.flashloanchain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "flashloanchain/flashloanchain/params.proto";
+
+option go_package = "github.com/kaushik-i-b/flashloanchain/x/flashloanchain/types";
+
+// GenesisState defines the flashloanchain module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
